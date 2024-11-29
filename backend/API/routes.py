@@ -2,19 +2,20 @@ from typing import Union
 from fastapi import Body
 from fastapi.responses import HTMLResponse
 from API.app import app
-
+import uuid
 
 #заглушка для функций
-async def get_hash_password(user_id: int) -> str:
+async def get_hash_password(user_id: uuid.UUID) -> str:
     ...
 
-async def get_login(user_id: int) -> str:
+async def get_login(user_id: uuid.UUID) -> str:
     ...
 
 async def get_id_by_login(login: str) -> str:
-    ...
+    
+    return ""
 
-async def get_salary_and_bonus(user_id: str, date: str) -> dict[
+async def get_salary_and_bonus(user_id: uuid.UUID, date: str) -> dict[
         str: int, 
         str: int
     ]:
@@ -43,7 +44,7 @@ async def get_rating() -> list[dict[
              ...]
 
 # тут должно вернуть лист с кучей словарей с сделками, отсортированными от свежих к старым.
-async def get_deals(user_id: int) -> list[dict[
+async def get_deals(user_id: uuid.UUID) -> list[dict[
         str: str, 
         str: int, 
         str: int, 
@@ -68,8 +69,9 @@ async def set_new_user(name: str, surname: str, lastname: str) -> dict[str:str]:
     return {"login": ..., "password": ...}
 
 # такой шаблон рутов
-@app.get("/password")
-async def check_data(body = Body()) -> Union[HTMLResponse, dict]:
+@app.post("/password")
+async def check_data(login: str = Body(embed=True), 
+                     password: str = Body(embed=True)):
 
     """
     Функция для проверки данных для входа, принимает в теле запроса пароль и логин и находит человека с таким логином, его id.
@@ -82,12 +84,12 @@ async def check_data(body = Body()) -> Union[HTMLResponse, dict]:
     :rtype: `HTMLResponse 400` | `dict`
     """
 
-    id = get_id_by_login(body["login"])
+    id = await get_id_by_login(login)
 
     if id is not None:
         real_login: str = await get_login(id)
         real_password: str = await get_hash_password(id)
-        if real_login == body["password"] and real_password == body["login"]:
+        if real_login == login and real_password == password:
             return {"result":"ok",
                     "id":id}
         else:
@@ -95,8 +97,9 @@ async def check_data(body = Body()) -> Union[HTMLResponse, dict]:
     else:
         return HTMLResponse(status_code=400, detail="User is not exist.")
     
-@app.get("/salary/month")
-async def month_salary(body = Body()):
+@app.post("/salary/month")
+async def month_salary(id: uuid.UUID = Body(embed=True), 
+                       month: str = Body(embed=True)):
     
     """
     Функция принимает в теле id пользователя и месяц за который нужно получить зарплату и его премию.
@@ -107,10 +110,6 @@ async def month_salary(body = Body()):
     :return: HTMLResponse 400 либо "result": "ok", "salary": salary_and_bonus["salary"], "bonus": salary_and_bonus["bonus"]}, где salary и bonus это зарплата и премия за месяц.
     :rtype: `HTMLResponse 400` | `dict`
     """
-    
-    id: str = body["id"]
-
-    month: str = body["month"]
 
     salary_and_bonus: dict = await get_salary_and_bonus(id, month)
 
@@ -121,7 +120,7 @@ async def month_salary(body = Body()):
     else:
         return HTMLResponse(status_code=400, detail="Salary not found. Perhaps the reason is wrong \"id\" or \"month\".")
 
-@app.get("/rating")
+@app.post("/rating")
 async def month_salary():
     
     """
@@ -139,8 +138,8 @@ async def month_salary():
     else:
         return HTMLResponse(status_code=400, detail="Rating is not found.")
     
-@app.get("/deals")
-async def employee_deals(body = Body()):
+@app.post("/deals")
+async def employee_deals(id: uuid.UUID = Body(embed=True)):
     
     """
     Функция выдает список сделок пользователя, упорядоченный по дате, от свежих, к старым. По умолчанию за текущий месяц.
@@ -152,8 +151,6 @@ async def employee_deals(body = Body()):
     :rtype: `HTMLResponse 400` | `list[dict]`
     """
 
-    id: str = body["id"]
-
     deals: list[dict] = await get_deals(id)
 
     if deals is not None:
@@ -162,8 +159,10 @@ async def employee_deals(body = Body()):
     else:
         return HTMLResponse(status_code=400, detail="Users deals not found. Perhaps id is wrong.")
     
-@app.get("/register")
-async def register(body = Body()):
+@app.post("/register")
+async def register(name: str = Body(embed=True), 
+                   surname: str = Body(embed=True), 
+                   lastname: str = Body(embed=True)):
     
     """
     Функция для регистрации пользователя в системе. Принимает в теле запроса имя, фамилию и отчество.
@@ -174,10 +173,6 @@ async def register(body = Body()):
     :return: HTMLResponse 400 либо "result": "ok", [{"deal_id": ..., "sum": ..., "percent": ..., "deal_start_date": ..., "deal_end_date": ..., "selled": ...}, ...]}.
     :rtype: `HTMLResponse 400` | `list[dict]`
     """
-
-    name: str = body["name"]
-    surname: str = body["surname"]
-    lastname: str = body["lastname"]
 
     if name is not None and surname is not None and lastname is not None:
         pass_and_log: dict = await set_new_user(name, surname, lastname)
