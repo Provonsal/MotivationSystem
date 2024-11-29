@@ -18,7 +18,10 @@ async def get_salary_and_bonus(user_id: str, date: str) -> dict:
     ...
     return {"salary": ..., "bonus": ...}
 
-
+# тут должно вернуть лист с кучей словарей с данными людей, отсортированными по уменьшению.
+async def get_rating() -> list[dict]:
+    ...
+    return [{"id": ..., "name": ..., "surname": ..., "lastname": ..., "salary": ..., "bonus": ...}, ...]
 
 # такой шаблон рутов
 @app.get("/password")
@@ -29,7 +32,7 @@ async def check_data(body = Body()) -> Union[HTMLResponse, dict]:
     Функция для проверки данных для входа, принимает в теле запроса пароль и логин и находит человека с таким логином, его id.
     И сравнивает логин и пароль в БД с переданными в запросе. Если совпадает, то возвращает результат ok и id найденного человека.
 
-    :param body: `Body`
+    :param body: json body
     :type body: `fastapi.Body()`
 
     :return: HTMLResponse 400 либо {"result": "ok", "id": id}, где id это найденный id пользователя по его логину.
@@ -38,8 +41,8 @@ async def check_data(body = Body()) -> Union[HTMLResponse, dict]:
 
     id = get_id_by_login(body["login"])
     if id is not None:
-        real_login: str = get_login(id)
-        real_password: str = get_hash_password(id)
+        real_login: str = await get_login(id)
+        real_password: str = await get_hash_password(id)
         if real_login == body["password"] and real_password == body["login"]:
             return {"result":"ok","id":id}
         else:
@@ -54,7 +57,7 @@ async def month_salary(body = Body()):
     
     Функция принимает в теле id пользователя и месяц за который нужно получить зарплату и его премию.
 
-    :param body: `Body`
+    :param body: json body
     :type body: `fastapi.Body()`
 
     :return: HTMLResponse 400 либо "result": "ok", "salary": salary_and_bonus["salary"], "bonus": salary_and_bonus["bonus"]}, где salary и bonus это зарплата и премия за месяц.
@@ -66,9 +69,31 @@ async def month_salary(body = Body()):
 
     month: str = body["month"]
 
-    salary_and_bonus: dict = get_salary_and_bonus(id, month)
+    salary_and_bonus: dict = await get_salary_and_bonus(id, month)
 
     if salary_and_bonus is not None:
         return {"result": "ok", "salary": salary_and_bonus["salary"], "bonus": salary_and_bonus["bonus"]}
+    else:
+        return HTMLResponse(400)
+
+@app.get("/rating")
+async def month_salary(body = Body()):
+    
+    """
+    
+    Функция выдает список всех людей, упорядоченный по сумме их оклада, от большего к меньшему.
+
+    :param body: json body
+    :type body: `fastapi.Body()`
+
+    :return: HTMLResponse 400 либо "result": "ok", [{"id": ..., "name": ..., "surname": ..., "lastname": ..., "salary": ..., "bonus": ...}, ...]}, где salary и bonus это зарплата и премия за месяц.
+    :rtype: `HTMLResponse 400` | `list[dict]`
+    
+    """
+
+    rating: list[dict] = get_rating()
+
+    if rating is not None:
+        return {"result": "ok", "rating": rating}
     else:
         return HTMLResponse(400)
