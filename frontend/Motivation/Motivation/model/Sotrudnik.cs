@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Motivation
 {
+    //хранит информацию о текущем сотруднике
     class Sotrudnik
     {
         string id;
