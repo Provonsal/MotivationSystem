@@ -13,7 +13,7 @@ from .base import Base
 
 class Users(Base):
     __tablename__ = "users"
-    id: Mapped[int] = mapped_column(UUID(as_uuid=True), primary_key=True)
+    id: Mapped[UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
     firstname: Mapped[str] = mapped_column(String(30))
     surname: Mapped[str] = mapped_column(String(30))
     lastname: Mapped[str] = mapped_column(String(30))
@@ -28,7 +28,7 @@ class Users(Base):
     balance: Mapped["Balance"] = relationship(
         "Balance",
         back_populates="user",
-        uselist=False,
+        uselist=False,\
         # lazy="joined"
     )
 
@@ -45,7 +45,7 @@ class Users(Base):
 
 class Passwords(Base):
     __tablename__ = "passwords"
-    id: Mapped[int] = mapped_column(ForeignKey("users.id"), primary_key=True)
+    id: Mapped[UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id"), primary_key=True)
     hash_pass: Mapped[str] = mapped_column(String(64))
     login: Mapped[str] = mapped_column(String(30))
 
@@ -60,7 +60,7 @@ class Passwords(Base):
 
 class Balance(Base):
     __tablename__ = "balance"
-    id: Mapped[int] = mapped_column(ForeignKey("users.id"), primary_key=True)
+    id: Mapped[UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id"), primary_key=True)
     money: Mapped[str] = mapped_column(DECIMAL(10, 2))
 
     user: Mapped["Users"] = relationship(
@@ -74,7 +74,7 @@ class Balance(Base):
 
 class Deals(Base):
     __tablename__ = "deals"
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
     id_user: Mapped[int] = mapped_column(ForeignKey("users.id"))
     sum: Mapped[str] = mapped_column(DECIMAL(10, 2))
     percent: Mapped[str] = mapped_column(DECIMAL(10, 2))
