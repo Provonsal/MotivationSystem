@@ -14,21 +14,19 @@ namespace Motivation
         public MainVieModel(Sotrudnik idsotr)
         {
            id = idsotr;
-           
-           
         }
 
-        private string firsname;
+        private string firstname;
         public string Firstname
         {
             get
             {
-                return firsname;
+                return firstname;
             }
             set
             {
-                firsname = value;
-                OnPropertyChanged(nameof(firsname));
+                firstname = value;
+                OnPropertyChanged(nameof(firstname));
             }
         }
         private string lastname;
@@ -58,20 +56,20 @@ namespace Motivation
             }
         }
         string year = DateTime.Now.Year.ToString();
-        static string [] month  = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };;
+        static string [] month  = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
 
-        int selectdmonth;
+        int selectedmonth;
         
         int SelectedMonth
         {
             get
             {
-                return selectdmonth;
+                return selectedmonth;
             }
             set
             {
-                selectdmonth = value;
-                OnPropertyChanged(nameof(selectdmonth));
+                selectedmonth = value;
+                OnPropertyChanged(nameof(selectedmonth));
             }
         }
 
