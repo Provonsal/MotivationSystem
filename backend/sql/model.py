@@ -1,13 +1,12 @@
-import os
-from dotenv import load_dotenv
-from datetime import date
-from sqlalchemy import ForeignKey, DECIMAL, String, DATE
+from sqlalchemy import ForeignKey, DECIMAL, String, DATETIME
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import relationship
 
 from sqlalchemy.dialects.postgresql import UUID
+from datetime import datetime
+
 
 
 class Base(DeclarativeBase):
@@ -17,10 +16,9 @@ class Base(DeclarativeBase):
 class Users(Base):
     __tablename__ = "users"
     id: Mapped[int] = mapped_column(UUID(as_uuid=True), primary_key=True)
-    name: Mapped[str] = mapped_column(String(30))
+    firstname: Mapped[str] = mapped_column(String(30))
     surname: Mapped[str] = mapped_column(String(30))
     lastname: Mapped[str] = mapped_column(String(30))
-    fullname: Mapped[str]
 
     password: Mapped["Passwords"] = relationship(
         "Passwords",
@@ -82,8 +80,8 @@ class Deals(Base):
     id_user: Mapped[int] = mapped_column(ForeignKey("users.id"))
     sum: Mapped[str] = mapped_column(DECIMAL(10, 2))
     percent: Mapped[str] = mapped_column(DECIMAL(10, 2))
-    date_deal_start: Mapped[date] = mapped_column(DATE)
-    date_deal_end: Mapped[date] = mapped_column(DATE)
+    date_deal_start: Mapped[datetime] = mapped_column(DATETIME)
+    date_deal_end: Mapped[datetime] = mapped_column(DATETIME)
 
     user: Mapped["Users"] = relationship(
         "Users",
