@@ -2,3 +2,4 @@
 ./backend/sql/.env
 __pycache__/
 ./dockerfiles/docker-compose-local.yaml
+.idea
