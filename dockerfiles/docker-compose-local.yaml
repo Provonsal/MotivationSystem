@@ -1,15 +1,15 @@
 version: "3.0"
 services:
   db:
-    container_name: ""
+    container_name: "Motivation"
     image: postgres:14.1-alpine
     restart: always
     environment:
-      - POSTGRES_USER=
-      - POSTGRES_PASSWORD=
-      - POSTGRES_DB=
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
     ports:
-      - "7546:5432"
+      - "5432:5432"
     networks:
       - custom
 networks:
