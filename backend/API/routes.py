@@ -1,23 +1,27 @@
 from typing import Union
-from fastapi import Body
+from fastapi import Body, Depends
 from fastapi.responses import HTMLResponse
 from API.app import app
 import uuid
+from sqlalchemy.ext.asyncio import AsyncSession
 
-#заглушка для функций
-async def get_hash_password(user_id: uuid.UUID) -> str:
-    ...
+from sql.base import get_session
+from sql.service import get_FIO_by_id, get_hash_password, get_id_by_login, get_login
 
-async def get_login(user_id: uuid.UUID) -> str:
-    ...
+# #заглушка для функций
+# async def get_hash_password(user_id: uuid.UUID) -> str:
+#     ...
 
-async def get_FIO_by_id(user_id: uuid.UUID) -> dict:
-    ...
-    return {"firstname": ..., "lastname": ..., "surname": ...}
+# async def get_login(user_id: uuid.UUID) -> str:
+#     ...
 
-async def get_id_by_login(login: str) -> str:
+# async def get_FIO_by_id(user_id: uuid.UUID) -> dict:
+#     ...
+#     return {"firstname": ..., "lastname": ..., "surname": ...}
+
+# async def get_id_by_login(login: str) -> str:
     
-    return ""
+#     return ""
 
 async def get_salary_and_bonus(user_id: uuid.UUID, date: str) -> dict[
         str: int, 
@@ -75,7 +79,8 @@ async def set_new_user(name: str, surname: str, lastname: str) -> dict[str:str]:
 # такой шаблон рутов
 @app.post("/password")
 async def check_data(login: str = Body(embed=True), 
-                     password: str = Body(embed=True)):
+                     password: str = Body(embed=True),
+                     session: AsyncSession = Depends(get_session)):
 
     """
     Функция для проверки данных для входа, принимает в теле запроса пароль и логин и находит человека с таким логином, его id.
@@ -88,13 +93,13 @@ async def check_data(login: str = Body(embed=True),
     :rtype: `HTMLResponse 400` | `dict`
     """
 
-    id: uuid.UUID = await get_id_by_login(login)
+    id: uuid.UUID = await get_id_by_login(session, login)
     
-    fio: dict = await get_FIO_by_id(id)
+    fio: dict = await get_FIO_by_id(session, id)
 
     if id is not None:
-        real_login: str = await get_login(id)
-        real_password: str = await get_hash_password(id)
+        real_login: str = await get_login(session, id)
+        real_password: str = await get_hash_password(session, id)
         if real_login == login and real_password == password:
             return {"result":"ok",
                     "id":id,
