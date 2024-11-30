@@ -11,6 +11,10 @@ async def get_hash_password(user_id: uuid.UUID) -> str:
 async def get_login(user_id: uuid.UUID) -> str:
     ...
 
+async def get_FIO_by_id(user_id: uuid.UUID) -> dict:
+    ...
+    return {"firstname": ..., "lastname": ..., "surname": ...}
+
 async def get_id_by_login(login: str) -> str:
     
     return ""
@@ -75,7 +79,7 @@ async def check_data(login: str = Body(embed=True),
 
     """
     Функция для проверки данных для входа, принимает в теле запроса пароль и логин и находит человека с таким логином, его id.
-    И сравнивает логин и пароль в БД с переданными в запросе. Если совпадает, то возвращает результат ok и id найденного человека.
+    И сравнивает логин и пароль в БД с переданными в запросе. Если совпадает, то возвращает результат ok и id найденного человека, и его фио.
 
     :param body: json `{\"login\": ...}`
     :type body: `fastapi.Body()`
@@ -84,14 +88,19 @@ async def check_data(login: str = Body(embed=True),
     :rtype: `HTMLResponse 400` | `dict`
     """
 
-    id = await get_id_by_login(login)
+    id: uuid.UUID = await get_id_by_login(login)
+    
+    fio: dict = await get_FIO_by_id(id)
 
     if id is not None:
         real_login: str = await get_login(id)
         real_password: str = await get_hash_password(id)
         if real_login == login and real_password == password:
             return {"result":"ok",
-                    "id":id}
+                    "id":id,
+                    "firtname": fio["firstname"],
+                    "lastname": fio["lastname"],
+                    "surname": fio["surname"]}
         else:
             return HTMLResponse(status_code=400, detail="Wrong login or password.")
     else:
