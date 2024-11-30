@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Motivation.model
 {
+    //класс рейтинг хранящая информацию о сотруднике и рейтинге
     public class Rating
     {
         //поле id

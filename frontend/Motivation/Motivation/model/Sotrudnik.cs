@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 namespace Motivation.model
 {
     //хранит информацию о текущем сотруднике
-    class Sotrudnik
+    public class Sotrudnik
     {
         // id сотрудника
-        string id;
+        public string id;
         // фамилия сотрудника
-        string firstname;
+        public string firstname;
         //имя сотрудника
-        string lastname;
+        public string lastname;
         //отчество сотрудника
-        string surname;
+        public string surname;
         public Sotrudnik(string id, string name, string lastname, string surname)
         {
             this.id = id;
