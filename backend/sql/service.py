@@ -5,35 +5,64 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from sql.base import init_models
+from typing import Any, NoReturn, Union
 from .model import *
 from sqlalchemy.dialects.postgresql import UUID
 
 import json
 
 
-async def get_id_by_login(session: AsyncSession, login: str) -> str:
+async def get_id_by_login(session: AsyncSession, login: str) -> Union[str, None]:
     result = await session.execute(select(Passwords.id).where(Passwords.login == login))
-    return result.scalars().one()
+    if result.rowcount != 0:
+        return result.scalars().one()[0]
+    else:  # если записи не найдены то возвращаем None.
+        return None
 
 
-async def get_FIO_by_id(session: AsyncSession, id: UUID) -> dict:
+async def get_FIO_by_id(session: AsyncSession, id: UUID) -> Union[dict, None]:
     result = await session.execute(select(Users.firstname, Users.surname, Users.lastname).where(Users.id == id))
-    return result.scalars().one()
+    if result.rowcount != 0:
+        return result.scalars().one()[0]
+    else:  # если записи не найдены то возвращаем None.
+        return None
 
 
-async def get_login(session: AsyncSession, id: UUID) -> str:
+async def get_login(session: AsyncSession, id: UUID) -> Union[str, None]:
     result = await session.execute(select(Passwords.login).where(Passwords.id == id))
-    return result.scalars().one()
+    if result.rowcount != 0:
+        return result.scalars().one()[0]
+    else:  # если записи не найдены то возвращаем None.
+        return None
 
 
-async def get_hash_password(session: AsyncSession, id: UUID) -> str:
+async def get_hash_password(session: AsyncSession, id: UUID) -> Union[str, None]:
     result = await session.execute(select(Passwords.hash_pass).where(Passwords.id == id))
-    return result.scalars().one()
+    if result.rowcount != 0:
+        return result.scalars().one()[0]
+    else:  # если записи не найдены то возвращаем None.
+        return None
 
 
-async def get_deals(session: AsyncSession, id: UUID) -> list[dict]:
+async def get_deals(session: AsyncSession, id: UUID) -> Union[Any, None]:
     result = await session.execute(select(Deals).where(Deals.id == id))
-    return result.scalars().all()
+    if result.rowcount != 0:
+        listResult = list()
+        for row in result:
+            listResult.append(
+                {
+                    "deal_id": row.id,
+                    "sum": row.sum,
+                    "percent": row.percent,
+                    "deal_start_date": row.deal_start_date,
+                    "deal_end_date": row.deal_end_date,
+                    "selled": row.selled
+                }
+            )
+        return listResult
+    else:  # если записи не найдены то возвращаем None.
+        return None
+
 
 
 async def get_salary_and_bonus(user_id: UUID, date: str):
