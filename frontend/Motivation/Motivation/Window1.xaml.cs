@@ -10,19 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Motivation.model;
+
 namespace Motivation
 {
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Логика взаимодействия для Window1.xaml
+    /// </summary>
+    public partial class Window1 : Window
     {
-        MainVieModel vm; 
-        public MainWindow()
+        public Window1()
         {
             InitializeComponent();
-            vm= new MainVieModel();
-            DataContext = vm;
         }
     }
 }

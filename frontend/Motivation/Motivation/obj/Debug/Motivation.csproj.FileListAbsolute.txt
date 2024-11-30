@@ -36,3 +36,5 @@ C:\Users\work\source\repos\MotivationSystem\frontend\Motivation\Motivation\obj\D
 C:\Users\work\source\repos\MotivationSystem\frontend\Motivation\Motivation\obj\Debug\Motivation.pdb
 C:\Users\work\source\repos\MotivationSystem\frontend\Motivation\Motivation\bin\Debug\System.Net.Http.Json.dll
 C:\Users\work\source\repos\MotivationSystem\frontend\Motivation\Motivation\bin\Debug\System.Net.Http.Json.xml
+C:\Users\work\source\repos\MotivationSystem\frontend\Motivation\Motivation\obj\Debug\Window1.g.cs
+C:\Users\work\source\repos\MotivationSystem\frontend\Motivation\Motivation\obj\Debug\Window1.baml

@@ -21,8 +21,9 @@ namespace Motivation.model
         DateTime date_deal_end;
         //название продуаного объекта
         string selled;
+        int count;
         //конструктор для заполнения базовых полей
-        public Deal(string id, UInt32 sum, uint percent, DateTime start, DateTime end,string sel)
+        public Deal(string id, UInt32 sum, uint percent, DateTime start, DateTime end,string sel, int con)
         {
             id_deal = id;
             this.sum = sum;
@@ -30,6 +31,7 @@ namespace Motivation.model
             date_deal_end = end;
             date_deal_start = start;
             selled = sel;
+            count = con;
         }
     }
 }

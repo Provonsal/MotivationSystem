@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Collections.ObjectModel;
 namespace Motivation.model
 {
+    //класс реализующий логику работы с http
     class Http
     {
         //хранит строку с ссылкой к api
-        const string api = "http://10.199.180.150:8000";
+        const string api = "http://192.168.137.172:8000";
         //используется для отправки и приема пакетов
         HttpClient http = new HttpClient();
         //метод отправки логина и получения id сотрудника
-        async Task<Sotrudnik> HttpLogin(Login login)
+       public async Task<Sotrudnik> HttpLogin(Login login)
         {
             // результат которая будет использована в возврате метода
             Sotrudnik result;
@@ -41,7 +39,7 @@ namespace Motivation.model
             }
         }
         //метод получения списка сделок по id сотрудника
-        async Task<ObservableCollection<Deal>> HttpDeals(string id)
+        public async Task<ObservableCollection<Deal>> HttpDeals(string id)
         {
             //Коллекция сделок сделанная специально для последующего отслеживания событий
             ObservableCollection<Deal> deal;
@@ -67,7 +65,7 @@ namespace Motivation.model
             }
         }
         //метод возврата списка рейтинга сотрудников
-        async Task<ObservableCollection<Rating>> HttpRating(string id)
+        public async Task<ObservableCollection<Rating>> HttpRating(string id)
         {
             ObservableCollection<Rating> rating;
             var response = await http.PostAsync(api + "/rating", null);
@@ -86,7 +84,7 @@ namespace Motivation.model
             }
         }
         //метод получения зарплаты по конкретному месяцу
-        async Task<OutputSalary> HttpMonthSalary(string id,DateTime month)
+        public async Task<OutputSalary> HttpMonthSalary(string id,DateTime month)
         {
             //пакет для отправки
             InputSalary sal = new InputSalary(id, month);
