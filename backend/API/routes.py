@@ -113,7 +113,8 @@ async def check_data(login: str = Body(embed=True),
     
 @app.post("/salary/month")
 async def month_salary(id: uuid.UUID = Body(embed=True), 
-                       month: str = Body(embed=True)):
+                       month: str = Body(embed=True),
+                       session: AsyncSession = Depends(get_session)):
     
     """
     Функция принимает в теле id пользователя и месяц за который нужно получить зарплату и его премию.
@@ -136,7 +137,7 @@ async def month_salary(id: uuid.UUID = Body(embed=True),
         return HTMLResponse(status_code=404)
 
 @app.post("/rating")
-async def month_salary():
+async def month_salary(session: AsyncSession = Depends(get_session)):
     
     """
     Функция выдает список всех людей, упорядоченный по сумме их оклада, от большего к меньшему.
@@ -154,7 +155,8 @@ async def month_salary():
         return HTMLResponse(status_code=404)
     
 @app.post("/deals")
-async def employee_deals(id: uuid.UUID = Body(embed=True)):
+async def employee_deals(id: uuid.UUID = Body(embed=True), 
+                         session: AsyncSession = Depends(get_session)):
     
     """
     Функция выдает список сделок пользователя, упорядоченный по дате, от свежих, к старым. По умолчанию за текущий месяц.
@@ -177,7 +179,8 @@ async def employee_deals(id: uuid.UUID = Body(embed=True)):
 @app.post("/register")
 async def register(name: str = Body(embed=True), 
                    surname: str = Body(embed=True), 
-                   lastname: str = Body(embed=True)):
+                   lastname: str = Body(embed=True),
+                   session: AsyncSession = Depends(get_session)):
     
     """
     Функция для регистрации пользователя в системе. Принимает в теле запроса имя, фамилию и отчество.
