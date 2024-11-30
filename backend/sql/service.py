@@ -1,7 +1,11 @@
+from decimal import Decimal
+
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from .model import *
 from sqlalchemy.dialects.postgresql import UUID
+
+import json
 
 
 async def get_id_by_login(session: AsyncSession, login: str) -> str:
@@ -31,6 +35,71 @@ async def get_deals(session: AsyncSession, id: UUID) -> list[dict]:
 
 async def get_salary_and_bonus(user_id: UUID, date: str):
     pass
+
+
+async def insert_test_data(session: AsyncSession):
+    from table_data import data
+
+    # Загрузка данных из JSON
+
+    # file_path = "table_data.json"
+    #
+    # with open(file_path, "r") as json_file:
+    #     data = json.load(json_file)
+
+    # Добавление пользователей
+
+    users = [
+        Users(
+            id=user["id"],
+            firstname=user["firstname"],
+            surname=user["surname"],
+            lastname=user["lastname"]
+        )
+        for user in data["users"]
+    ]
+    session.add_all(users)
+
+    # Добавление паролей
+    passwords = [
+        Passwords(
+            id=password["id"],
+            login=password["login"],
+            hash_pass=password["hash_pass"]
+        )
+        for password in data["passwords"]
+    ]
+    session.add_all(passwords)
+
+    # Добавление баланса
+    balances = [
+        Balance(
+            id=balance["id"],
+            money=Decimal(balance["money"])
+        )
+        for balance in data["balance"]
+    ]
+    session.add_all(balances)
+
+    # Добавление сделок
+    deals = [
+        Deals(
+            id=deal["id"],
+            id_user=deal["id_user"],
+            sum=Decimal(deal["sum"]),
+            percent=Decimal(deal["percent"]),
+            date_deal_start=datetime.fromisoformat(deal["date_deal_start"]),
+            date_deal_end=datetime.fromisoformat(deal["date_deal_end"]),
+            selled=deal["selled"],
+            count=deal["count"]
+        )
+        for deal in data["deals"]
+    ]
+
+    session.add_all(deals)
+
+    # Коммитим изменения
+    await session.commit()
 
 
 async def get_rating():
