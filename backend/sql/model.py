@@ -3,9 +3,8 @@ from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import relationship
 
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import UUID, DATE
 from uuid import uuid4
-from datetime import datetime
 
 from .base import Base
 
@@ -79,8 +78,8 @@ class Deals(Base):
     id_user: Mapped[UUID] = mapped_column(ForeignKey("users.id"))
     sum: Mapped[str] = mapped_column(DECIMAL(10, 2))
     percent: Mapped[str] = mapped_column(DECIMAL(10, 2))
-    date_deal_start: Mapped[datetime] = mapped_column(DATETIME)
-    date_deal_end: Mapped[datetime] = mapped_column(DATETIME)
+    date_deal_start: Mapped[DATE] = mapped_column(DATE)
+    date_deal_end: Mapped[DATE] = mapped_column(DATE)
     selled: Mapped[str] = mapped_column(String(30))
     count: Mapped[int] = mapped_column(Integer)
     # is_cost: Mapped[bool] =
