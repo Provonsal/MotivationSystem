@@ -1,4 +1,4 @@
-from base import init_models
+from sql.base import init_models
 import asyncio
 
 if __name__ == "__main__":
