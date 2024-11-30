@@ -102,9 +102,9 @@ async def check_data(login: str = Body(embed=True),
                     "lastname": fio["lastname"],
                     "surname": fio["surname"]}
         else:
-            return HTMLResponse(status_code=400, detail="Wrong login or password.")
+            return HTMLResponse(status_code=400)
     else:
-        return HTMLResponse(status_code=400, detail="User is not exist.")
+        return HTMLResponse(status_code=404)
     
 @app.post("/salary/month")
 async def month_salary(id: uuid.UUID = Body(embed=True), 
@@ -128,7 +128,7 @@ async def month_salary(id: uuid.UUID = Body(embed=True),
                 "salary": salary_and_bonus["salary"], 
                 "bonus": salary_and_bonus["bonus"]}
     else:
-        return HTMLResponse(status_code=400, detail="Salary not found. Perhaps the reason is wrong \"id\" or \"month\".")
+        return HTMLResponse(status_code=404)
 
 @app.post("/rating")
 async def month_salary():
@@ -146,7 +146,7 @@ async def month_salary():
         return {"result": "ok", 
                 "rating": rating}
     else:
-        return HTMLResponse(status_code=400, detail="Rating is not found.")
+        return HTMLResponse(status_code=404)
     
 @app.post("/deals")
 async def employee_deals(id: uuid.UUID = Body(embed=True)):
@@ -167,7 +167,7 @@ async def employee_deals(id: uuid.UUID = Body(embed=True)):
         return {"result": "ok", 
                 "deals": deals}
     else:
-        return HTMLResponse(status_code=400, detail="Users deals not found. Perhaps id is wrong.")
+        return HTMLResponse(status_code=404)
     
 @app.post("/register")
 async def register(name: str = Body(embed=True), 
@@ -190,4 +190,4 @@ async def register(name: str = Body(embed=True),
                 "login": pass_and_log["login"], 
                 "password": pass_and_log["password"]}
     else:
-        return HTMLResponse(status_code=400, detail="User already exist.")
+        return HTMLResponse(status_code=400)
