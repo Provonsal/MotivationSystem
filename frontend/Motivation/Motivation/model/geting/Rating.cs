@@ -10,16 +10,16 @@ namespace Motivation.model
     public class Rating
     {
         //поле id
-        string id;
+        public string id;
         //поле фамилии
-        string firstname;
+        public string firstname;
         //поле отчество
-        string surname;
+        public string surname;
         //поле имя
-        string lastname;
+        public string lastname;
         //поле харплата
-        UInt32 salary;
+        public UInt32 salary;
         //поле премия
-        UInt16 bonus;
+        public UInt16 bonus;
     }
 }

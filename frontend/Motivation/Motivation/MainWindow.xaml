@@ -1,12 +1,21 @@
 ﻿<Window x:Class="Motivation.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Motivation" d:DataContext="{d:DesignInstance Type=local:ViewModel}"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:local="clr-namespace:Motivation" xmlns:motivation="clr-namespace:Motivation" d:DataContext="{d:DesignInstance Type=motivation:MainViewModel}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+Title="MainWindow"
+WindowState = "Maximized" Width="1036"
+>
     <Grid>
-        
+        <Button Content="Button" HorizontalAlignment="Left" Margin="100,50,0,0" VerticalAlignment="Top" Width="150" Height="50" FontSize="20"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="300,50,0,0" VerticalAlignment="Top" Width="150" Height="50" FontSize="20"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="500,50,0,0" VerticalAlignment="Top" Width="150" Height="50" FontSize="20"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="700,50,0,0" VerticalAlignment="Top" Width="150" Height="50" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,150,0,0" TextWrapping="Wrap" Text="{Binding Firstname}" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,200,0,0" TextWrapping="Wrap" Text="{Binding Lastname}" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,250,0,0" TextWrapping="Wrap" Text="{Binding Surname}" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,300,0,0" TextWrapping="Wrap" Text="{Binding SotrudnikRating}" VerticalAlignment="Top" FontSize="20"/>
     </Grid>
 </Window>

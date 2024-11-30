@@ -12,19 +12,44 @@ namespace Motivation
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        Sotrudnik id;
+        Sotrudnik sotrudnik;
         Http http=new Http();
         public MainViewModel(Sotrudnik idsotr)
         {
-           id = idsotr;
+            sotrudnik = idsotr;
+            Task<ObservableCollection<Rating>> rat = http.HttpRating(sotrudnik.id);
+            rat.RunSynchronously();
+            rating = rat.Result;
+            foreach(var r in rating)
+            {
+                int id=1;
+                if(r.id == sotrudnik.id)
+                    {
+                    sotrudnikRating = id;
+                    break;
+                }
+                id++;
+            }
         }
-
+        int sotrudnikRating;
+        public int SotrudnikRating
+        {
+            get
+            {
+                return sotrudnikRating;
+            }
+            set
+            {
+                sotrudnikRating = value;
+                OnPropertyChanged(nameof(sotrudnikRating));
+            }
+        }
         private string firstname;
         public string Firstname
         {
             get
             {
-                firstname = id.firstname;
+                firstname = sotrudnik.firstname;
                 return firstname;
             }
             set
@@ -38,7 +63,7 @@ namespace Motivation
         {
             get
             {
-                lastname = id.lastname;
+                lastname = sotrudnik.lastname;
                 return lastname;
             }
             set
@@ -52,7 +77,7 @@ namespace Motivation
         {
             get
             {
-                surname = id.surname;
+                surname = sotrudnik.surname;
                 return surname;
             }
             set
@@ -87,7 +112,7 @@ namespace Motivation
                   {
                       try
                       {
-                          deals = await http.HttpDeals(id.id);
+                          deals = await http.HttpDeals(sotrudnik.id);
                       }
                       catch (Exception ex)
                       {
@@ -131,7 +156,7 @@ namespace Motivation
                   {
                       try
                       {
-                          salary = await http.HttpMonthSalary(id.id, new DateTime(year, selectedmonth + 1, DateTime.DaysInMonth(year, selectedmonth + 1)));
+                          salary = await http.HttpMonthSalary(sotrudnik.id, new DateTime(year, selectedmonth + 1, DateTime.DaysInMonth(year, selectedmonth + 1)));
                       }
                       catch (Exception ex)
                       {
@@ -163,7 +188,7 @@ namespace Motivation
                   {
                       try
                       {
-                          rating = await http.HttpRating(id.id);
+                          rating = await http.HttpRating(sotrudnik.id);
                       }
                       catch (Exception ex)
                       {
