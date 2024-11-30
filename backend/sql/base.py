@@ -37,7 +37,10 @@ async def init_models():
 
 
 async def get_session() -> AsyncSession:
-    async with async_session() as session:
+    session = async_session()
+    try:
         yield session
+    finally:
+        await session.close()
 
 db_dependency = Annotated[AsyncSession, Depends(get_session)]
