@@ -84,7 +84,7 @@ async def check_data(login: str = Body(embed=True),
     :param body: json `{\"login\": ...}`
     :type body: `fastapi.Body()`
 
-    :return: HTMLResponse 400 либо {"result": "ok", "id": id}, где id это найденный id пользователя по его логину.
+    :return: HTMLResponse 400 либо {"result": "ok", "id": id, "firstname": ..., "lastname": ..., "surname": ...}, где id это найденный id пользователя по его логину.
     :rtype: `HTMLResponse 400` | `dict`
     """
 
@@ -98,7 +98,7 @@ async def check_data(login: str = Body(embed=True),
         if real_login == login and real_password == password:
             return {"result":"ok",
                     "id":id,
-                    "firtname": fio["firstname"],
+                    "firstname": fio["firstname"],
                     "lastname": fio["lastname"],
                     "surname": fio["surname"]}
         else:
@@ -180,7 +180,7 @@ async def register(name: str = Body(embed=True),
     :param body: json `{\"name\": ..., \"surname\": ..., \"lastname\": ...}`
     :type body: `fastapi.Body()`
 
-    :return: HTMLResponse 400 либо "result": "ok", [{"deal_id": ..., "sum": ..., "percent": ..., "deal_start_date": ..., "deal_end_date": ..., "selled": ...}, ...]}.
+    :return: HTMLResponse 400 либо "result": "ok", "login": ..., "password": ...}.
     :rtype: `HTMLResponse 400` | `list[dict]`
     """
 
