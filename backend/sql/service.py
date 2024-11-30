@@ -24,9 +24,9 @@ async def get_hash_password(session: AsyncSession, id: UUID) -> str:
     return result.scalars().one()
 
 
-async def get_deals(session: AsyncSession, id: UUID) -> str:
+async def get_deals(session: AsyncSession, id: UUID) -> list[dict]:
     result = await session.execute(select(Deals).where(Deals.id == id))
-    return result.scalars().one()
+    return result.scalars().all()
 
 
 async def get_salary_and_bonus(user_id: UUID, date: str):
