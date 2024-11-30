@@ -124,6 +124,7 @@ async def month_salary(id: uuid.UUID = Body(embed=True),
 
     if salary_and_bonus is not None:
         return {"result": "ok", 
+                "month": month,
                 "salary": salary_and_bonus["salary"], 
                 "bonus": salary_and_bonus["bonus"]}
     else:
