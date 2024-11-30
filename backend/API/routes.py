@@ -76,7 +76,6 @@ async def set_new_user(name: str, surname: str, lastname: str) -> dict[str:str]:
     ...
     return {"login": ..., "password": ...}
 
-# такой шаблон рутов
 @app.post("/password")
 async def check_data(
                      session: db_dependency,
