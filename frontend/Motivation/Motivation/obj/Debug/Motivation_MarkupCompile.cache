@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\work\source\repos\MotivationSystem\frontend\Motivation\Motivation\obj\Debug\
+D:\Prog_Git\6\MotivationSystem\frontend\Motivation\Motivation\obj\Debug\
 Motivation
 none
 false
 DEBUG;TRACE
-C:\Users\work\source\repos\MotivationSystem\frontend\Motivation\Motivation\App.xaml
-2-419086188
+D:\Prog_Git\6\MotivationSystem\frontend\Motivation\Motivation\App.xaml
+6-689410354
 
-16-570735269
-129-1630840051
-Login.xaml;MainWindow.xaml;
+20-1017564007
+12986956543
+Login.xaml;MainWindow.xaml;PageDeal.xaml;PageRating.xaml;PageSalary.xaml;PageSotrudnik.xaml;
 
-False
+True
 

@@ -17,12 +17,35 @@ namespace Motivation
 {
     public partial class MainWindow : Window
     {
-        MainViewModel vm; 
-        public MainWindow(Sotrudnik sotrudnik)
+        MainViewModel vm;
+        public MainWindow()
         {
             InitializeComponent();
-            vm= new MainViewModel(sotrudnik);
-            DataContext = vm;
+        }
+
+        private void Sotrudnik_S(object sender, RoutedEventArgs e)
+        {
+            //Главная страница
+            MainContent.Content = new PageSotrudnik();
+        }
+
+        private void Rating_S(object sender, RoutedEventArgs e)
+        {
+            //страница Рейтинга
+            MainContent.Content = new PageRating();
+        }
+
+        private void Deal_S(object sender, RoutedEventArgs e)
+        {
+            //страница Сделок
+            MainContent.Content = new PageDeal();
+        }
+
+        private void Salary_S(object sender, RoutedEventArgs e)
+        {
+            //страница Зарплаты
+            MainContent.Content = new PageSalary();
+
         }
     }
 }
