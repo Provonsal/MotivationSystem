@@ -4,7 +4,7 @@ from fastapi.responses import HTMLResponse
 from API.app import app
 import uuid
 from sqlalchemy.ext.asyncio import AsyncSession
-
+from sql.base import db_dependency
 from sql.base import get_session
 from sql.service import get_FIO_by_id, get_hash_password, get_id_by_login, get_login
 
@@ -78,9 +78,11 @@ async def set_new_user(name: str, surname: str, lastname: str) -> dict[str:str]:
 
 # такой шаблон рутов
 @app.post("/password")
-async def check_data(login: str = Body(embed=True), 
+async def check_data(
+                     session: db_dependency,
+                     login: str = Body(embed=True), 
                      password: str = Body(embed=True),
-                     session: AsyncSession = Depends(get_session)):
+                     ):
 
     """
     Функция для проверки данных для входа, принимает в теле запроса пароль и логин и находит человека с таким логином, его id.
