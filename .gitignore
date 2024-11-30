@@ -1,5 +1,6 @@
 .venv/
 ./backend/sql/.env
-.idea
+.idea/
 __pycache__/
 ./dockerfiles/docker-compose-local.yaml
+
