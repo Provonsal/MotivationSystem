@@ -1,6 +1,5 @@
 import uvicorn
-import API
-from API.app import app
+from API.routes import app
 
 if __name__ == "__main__":
     uvicorn.run(app=app, host="0.0.0.0")
