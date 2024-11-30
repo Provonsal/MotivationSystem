@@ -4,7 +4,7 @@ from .model import *
 from sqlalchemy.dialects.postgresql import UUID
 
 
-async def get_id_by_login(session: AsyncSession, login):
+async def get_id_by_login(session: AsyncSession, login: str): ->str
     result = await session.execute(select(Passwords.id).where(Passwords.login == login))
     return result
 
