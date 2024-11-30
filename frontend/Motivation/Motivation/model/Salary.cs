@@ -7,13 +7,16 @@ using System.Threading.Tasks;
 namespace Motivation.model
 {
     //необходим для информации о зарплате по конкретному месяцу
-    class Salary
+    public class OutputSalary
     {
+        //месяц зарплаты
         public DateTime month;
+        //зарплата
         public UInt32 salary;
+        //процент премии который сотрудник получил
         public UInt16 bonus;
         //конструктор с параметрами для заполнения всех полей
-        public Salary(DateTime mon, UInt32 sal, UInt16 bon)
+        public OutputSalary(DateTime mon, UInt32 sal, UInt16 bon)
         {
             month = mon;
             salary = sal;

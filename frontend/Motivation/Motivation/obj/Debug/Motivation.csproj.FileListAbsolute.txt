@@ -34,3 +34,5 @@ C:\Users\work\source\repos\MotivationSystem\frontend\Motivation\Motivation\obj\D
 C:\Users\work\source\repos\MotivationSystem\frontend\Motivation\Motivation\obj\Debug\Motivation.csproj.CopyComplete
 C:\Users\work\source\repos\MotivationSystem\frontend\Motivation\Motivation\obj\Debug\Motivation.exe
 C:\Users\work\source\repos\MotivationSystem\frontend\Motivation\Motivation\obj\Debug\Motivation.pdb
+C:\Users\work\source\repos\MotivationSystem\frontend\Motivation\Motivation\bin\Debug\System.Net.Http.Json.dll
+C:\Users\work\source\repos\MotivationSystem\frontend\Motivation\Motivation\bin\Debug\System.Net.Http.Json.xml

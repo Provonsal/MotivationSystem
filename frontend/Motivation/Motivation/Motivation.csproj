@@ -139,7 +139,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="model\Deal.cs" />
+    <Compile Include="model\Http.cs" />
     <Compile Include="model\login.cs" />
+    <Compile Include="model\MonthSalary.cs" />
+    <Compile Include="model\Rating.cs" />
     <Compile Include="model\Salary.cs" />
     <Compile Include="model\Sotrudnik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

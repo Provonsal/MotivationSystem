@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
-namespace Motivation
+namespace Motivation.model
 {
     //используется для промежуточного сохранения логина и пароля для последующей отправки
-    class Login
+    public class Login
     {
+        //логин пользователя
         string login;
+        //пароль пользователя
         string password;
         //конструктор для создание записи логина и хеширования пароля
        public Login(string log, string pass)
