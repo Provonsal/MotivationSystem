@@ -75,7 +75,7 @@ class Balance(Base):
 class Deals(Base):
     __tablename__ = "deals"
     id: Mapped[UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
-    id_user: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    id_user: Mapped[UUID] = mapped_column(ForeignKey("users.id"))
     sum: Mapped[str] = mapped_column(DECIMAL(10, 2))
     percent: Mapped[str] = mapped_column(DECIMAL(10, 2))
     date_deal_start: Mapped[datetime] = mapped_column(DATETIME)
