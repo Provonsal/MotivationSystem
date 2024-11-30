@@ -1,4 +1,4 @@
-from sqlalchemy import ForeignKey, DECIMAL, String, DATETIME, Integer
+from sqlalchemy import ForeignKey, DECIMAL, String, Integer
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import relationship
