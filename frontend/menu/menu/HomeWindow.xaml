@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="front_2.MainWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Grid>
+        <TextBlock x:Name="id" HorizontalAlignment="Left" Margin="100,150,0,0" TextWrapping="Wrap" Text="TextBlock1" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="name" HorizontalAlignment="Left" Margin="100,200,0,0" TextWrapping="Wrap" Text="TextBlock2" VerticalAlignment="Top" FontSize="20"/>
+        
+        <TextBlock x:Name="firstname" HorizontalAlignment="Left" Margin="100,250,0,0" TextWrapping="Wrap" Text="TextBlock3" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="surname" HorizontalAlignment="Left" Margin="100,300,0,0" TextWrapping="Wrap" Text="TextBlock4" VerticalAlignment="Top" FontSize="20"/>
+    </Grid>
+</UserControl>

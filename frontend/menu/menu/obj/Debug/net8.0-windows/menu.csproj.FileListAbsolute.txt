@@ -1,0 +1,28 @@
+C:\Users\KareDE\source\repos\menu\menu\bin\Debug\net8.0-windows\menu.exe
+C:\Users\KareDE\source\repos\menu\menu\bin\Debug\net8.0-windows\menu.deps.json
+C:\Users\KareDE\source\repos\menu\menu\bin\Debug\net8.0-windows\menu.runtimeconfig.json
+C:\Users\KareDE\source\repos\menu\menu\bin\Debug\net8.0-windows\menu.dll
+C:\Users\KareDE\source\repos\menu\menu\bin\Debug\net8.0-windows\menu.pdb
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\menu_MarkupCompile.cache
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\menu_MarkupCompile.lref
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\menu.g.resources
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\menu.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\menu.AssemblyInfoInputs.cache
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\menu.AssemblyInfo.cs
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\menu.csproj.CoreCompileInputs.cache
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\menu.dll
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\refint\menu.dll
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\menu.pdb
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\menu.genruntimeconfig.cache
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\ref\menu.dll
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\DealWindow.baml
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\HomeWindow.baml
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\RatingWindow.baml
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\SalaryWindow .baml
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\DealWindow.g.cs
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\HomeWindow.g.cs
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\RatingWindow.g.cs
+C:\Users\KareDE\source\repos\menu\menu\obj\Debug\net8.0-windows\SalaryWindow .g.cs
