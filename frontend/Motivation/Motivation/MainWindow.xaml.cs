@@ -18,10 +18,10 @@ namespace Motivation
     public partial class MainWindow : Window
     {
         MainVieModel vm; 
-        public MainWindow()
+        public MainWindow(Sotrudnik sotrudnik)
         {
             InitializeComponent();
-            vm= new MainVieModel();
+            vm= new MainVieModel(sotrudnik);
             DataContext = vm;
         }
     }

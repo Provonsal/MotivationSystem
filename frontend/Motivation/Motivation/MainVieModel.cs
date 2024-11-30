@@ -11,10 +11,10 @@ namespace Motivation
     public class MainVieModel : INotifyPropertyChanged
     {
         Sotrudnik id;
-        public MainVieModel()
+        public MainVieModel(Sotrudnik idsotr)
         {
-           //id = idsotr;
-            int iddd = month.IndexOf("Январь");
+           id = idsotr;
+           
            
         }
 

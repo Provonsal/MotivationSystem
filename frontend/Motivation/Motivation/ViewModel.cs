@@ -31,7 +31,7 @@ namespace Motivation
                       {
                           MessageBox.Show(ex.ToString(),"Ошибка", MessageBoxButton.OK,MessageBoxImage.Error);
                       }
-                      MainWindow mw = new MainWindow();
+                      MainWindow mw = new MainWindow(sotrudnik);
                       mw.Show(); }));
             }
         }
