@@ -15,13 +15,15 @@ using System.Windows.Shapes;
 namespace Motivation
 {
     /// <summary>
-    /// Логика взаимодействия для Window1.xaml
+    /// Логика взаимодействия для Login.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class LoginWindow : Window
     {
-        public Window1()
+        public LoginWindow()
         {
             InitializeComponent();
+            ViewModel vm = new ViewModel();
+            DataContext = vm;
         }
     }
 }

@@ -17,11 +17,11 @@ namespace Motivation
 {
     public partial class MainWindow : Window
     {
-        MainVieModel vm; 
+        MainViewModel vm; 
         public MainWindow(Sotrudnik sotrudnik)
         {
             InitializeComponent();
-            vm= new MainVieModel(sotrudnik);
+            vm= new MainViewModel(sotrudnik);
             DataContext = vm;
         }
     }

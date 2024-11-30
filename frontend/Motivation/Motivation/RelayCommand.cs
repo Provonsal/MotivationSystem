@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 namespace Motivation
 {
-    class RelayCommand:ICommand
+   public class RelayCommand:ICommand
     {
        
             private Action<object> execute;

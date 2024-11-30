@@ -35,7 +35,7 @@ namespace Motivation
                       mw.Show(); }));
             }
         }
-        private string login = "Вася";
+        private string login;
         public string Login
         {
             get
@@ -48,7 +48,7 @@ namespace Motivation
                 OnPropertyChanged(nameof(login));
             }
         }
-        private string password = "петя";
+        private string password;
         public string Password
         {
             get
