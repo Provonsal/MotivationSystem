@@ -7,6 +7,7 @@
 3. **[/rating](#servercom8000rating)**
 4. **[/deals](#servercom8000deals)**
 5. **[/register](#servercom8000register)**
+6. **[/test](#servercom8000test)**
 
 ---
 
@@ -82,6 +83,19 @@
 
 В ответе:  
 `"result": "ok", "login": ..., "password": ...}`  
+  
+либо, если что-то не так:  
+`HTMLResponse 400`
+
+### server.com:8000/test
+
+Функция для ввода тестовых данных.
+
+В запросе:  
+`{}`
+
+В ответе:  
+`HTMLResponse 200`
   
 либо, если что-то не так:  
 `HTMLResponse 400`
