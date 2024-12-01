@@ -6,7 +6,7 @@ import uuid
 from sqlalchemy.ext.asyncio import AsyncSession
 from sql.base import db_dependency
 from sql.base import get_session
-from sql.service import get_FIO_by_id, get_hash_password, get_id_by_login, get_login
+from sql.service import get_FIO_by_id, get_hash_password, get_id_by_login, get_login, insert_test_data
 
 # #заглушка для функций
 # async def get_hash_password(user_id: uuid.UUID) -> str:
@@ -200,3 +200,19 @@ async def register(name: str = Body(embed=True),
                 "password": pass_and_log["password"]}
     else:
         return HTMLResponse(status_code=400)
+    
+@app.post("/test")
+async def test(session: AsyncSession = Depends(get_session)):
+    
+    """
+    Функция для регистрации пользователя в системе. Принимает в теле запроса имя, фамилию и отчество.
+
+    :param body: json `{\"name\": ..., \"surname\": ..., \"lastname\": ...}`
+    :type body: `fastapi.Body()`
+
+    :return: HTMLResponse 400 либо "result": "ok", "login": ..., "password": ...}.
+    :rtype: `HTMLResponse 400` | `list[dict]`
+    """
+    
+    await insert_test_data(session)
+    return HTMLResponse(status_code=200)

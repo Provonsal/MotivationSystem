@@ -37,6 +37,7 @@ async def get_FIO_by_id(session: AsyncSession, id: UUID) -> Union[dict, None]:
 
 
 async def get_login(session: AsyncSession, id: UUID) -> Union[str, None]:
+
     result = await session.execute(select(Passwords.login).where(Passwords.id == id))
     if result.rowcount != 0:
         r = result.all()[0]
@@ -82,7 +83,7 @@ async def get_salary_and_bonus(user_id: UUID, date: str):
 
 
 async def insert_test_data(session: AsyncSession):
-    from table_data import data
+    from sql.table_data import data
 
     # Загрузка данных из JSON
 
@@ -132,8 +133,8 @@ async def insert_test_data(session: AsyncSession):
             id_user=deal["id_user"],
             sum=Decimal(deal["sum"]),
             percent=Decimal(deal["percent"]),
-            date_deal_start=datetime.fromisoformat(deal["date_deal_start"]),
-            date_deal_end=datetime.fromisoformat(deal["date_deal_end"]),
+            date_deal_start=datetime.datetime.fromisoformat(deal["date_deal_start"]),
+            date_deal_end=datetime.datetime.fromisoformat(deal["date_deal_end"]),
             selled=deal["selled"],
             count=deal["count"]
         )
@@ -144,6 +145,7 @@ async def insert_test_data(session: AsyncSession):
 
     # Коммитим изменения
     await session.commit()
+    await session.flush()
 
 
 async def get_rating():
