@@ -2,4 +2,4 @@
 /backend/sql/.env
 .idea/
 __pycache__/
-
+.vs/
