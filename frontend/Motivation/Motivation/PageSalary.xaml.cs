@@ -20,9 +20,11 @@ namespace Motivation
     /// </summary>
     public partial class PageSalary : UserControl
     {
-        public PageSalary()
+        MainViewModel vm;
+        public PageSalary(MainViewModel vm)
         {
             InitializeComponent();
+            this.vm = vm;
         }
     }
 }

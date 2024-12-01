@@ -1,28 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\KareDE\\source\\repos\\menu\\menu\\menu.csproj": {}
+    "C:\\Users\\work\\Source\\Repos\\MotivationSystem2\\frontend\\menu\\menu\\menu.csproj": {}
   },
   "projects": {
-    "C:\\Users\\KareDE\\source\\repos\\menu\\menu\\menu.csproj": {
+    "C:\\Users\\work\\Source\\Repos\\MotivationSystem2\\frontend\\menu\\menu\\menu.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\KareDE\\source\\repos\\menu\\menu\\menu.csproj",
+        "projectUniqueName": "C:\\Users\\work\\Source\\Repos\\MotivationSystem2\\frontend\\menu\\menu\\menu.csproj",
         "projectName": "menu",
-        "projectPath": "C:\\Users\\KareDE\\source\\repos\\menu\\menu\\menu.csproj",
-        "packagesPath": "C:\\Users\\KareDE\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\KareDE\\source\\repos\\menu\\menu\\obj\\",
+        "projectPath": "C:\\Users\\work\\Source\\Repos\\MotivationSystem2\\frontend\\menu\\menu\\menu.csproj",
+        "packagesPath": "C:\\Users\\work\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\work\\Source\\Repos\\MotivationSystem2\\frontend\\menu\\menu\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\KareDE\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\work\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0-windows"
+          "net8.0-windows7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -38,11 +34,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -54,20 +45,11 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WPF": {
-              "privateAssets": "none"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

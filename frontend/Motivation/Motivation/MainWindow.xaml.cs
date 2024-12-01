@@ -18,33 +18,34 @@ namespace Motivation
     public partial class MainWindow : Window
     {
         MainViewModel vm;
-        public MainWindow()
+        public MainWindow(Sotrudnik sotrudnik)
         {
             InitializeComponent();
+            vm = new MainViewModel(sotrudnik);
         }
 
         private void Sotrudnik_S(object sender, RoutedEventArgs e)
         {
             //Главная страница
-            MainContent.Content = new PageSotrudnik();
+            MainContent.Content = new PageSotrudnik(vm);
         }
 
         private void Rating_S(object sender, RoutedEventArgs e)
         {
             //страница Рейтинга
-            MainContent.Content = new PageRating();
+            MainContent.Content = new PageRating(vm);
         }
 
         private void Deal_S(object sender, RoutedEventArgs e)
         {
             //страница Сделок
-            MainContent.Content = new PageDeal();
+            MainContent.Content = new PageDeal(vm);
         }
 
         private void Salary_S(object sender, RoutedEventArgs e)
         {
             //страница Зарплаты
-            MainContent.Content = new PageSalary();
+            MainContent.Content = new PageSalary(vm);
 
         }
     }

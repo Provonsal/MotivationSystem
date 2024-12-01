@@ -21,11 +21,11 @@ namespace Motivation
     /// </summary>
     public partial class PageSotrudnik : UserControl
     {
-        public PageSotrudnik(Sotrudnik  sotrudnik)
+        MainViewModel vm;
+        public PageSotrudnik(MainViewModel vm)
         {
-            PageSotrudnik vm;
             InitializeComponent();
-            vm = new PageSotrudnik(sotrudnik);
+            this.vm = vm;
             DataContext = vm;
         }
     }

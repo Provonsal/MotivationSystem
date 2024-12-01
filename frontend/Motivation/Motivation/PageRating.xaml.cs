@@ -20,9 +20,11 @@ namespace Motivation
     /// </summary>
     public partial class PageRating : UserControl
     {
-        public PageRating()
+        MainViewModel vm;
+        public PageRating(MainViewModel vm)
         {
             InitializeComponent();
+            this.vm = vm;
         }
     }
 }

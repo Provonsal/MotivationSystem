@@ -20,9 +20,12 @@ namespace Motivation
     /// </summary>
     public partial class PageDeal : UserControl
     {
-        public PageDeal()
+        MainViewModel vm;
+        public PageDeal(MainViewModel vm)
         {
             InitializeComponent();
+            this.vm = vm;
+            DataContext = vm;
         }
     }
 }

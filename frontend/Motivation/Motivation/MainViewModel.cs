@@ -12,7 +12,7 @@ namespace Motivation
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        Sotrudnik sotrudnik;
+        public Sotrudnik sotrudnik;
         Http http=new Http();
         public MainViewModel(Sotrudnik idsotr)
         {
@@ -122,7 +122,7 @@ namespace Motivation
             }
         }
         OutputSalary salary;
-        OutputSalary Salary
+        public OutputSalary Salary
         {
             get
             {
@@ -134,7 +134,7 @@ namespace Motivation
                 OnPropertyChanged(nameof(salary));
             }
         }
-        int SelectedMonth
+       public int SelectedMonth
         {
             get
             {
@@ -166,7 +166,7 @@ namespace Motivation
             }
         }
         ObservableCollection<Deal> deals;
-        ObservableCollection<Deal> Deals
+        public ObservableCollection<Deal> Deals
         {
             get
             {
@@ -198,7 +198,7 @@ namespace Motivation
             }
         }
         ObservableCollection<Rating> rating;
-        ObservableCollection<Rating> Rating
+       public ObservableCollection<Rating> Rating
         {
             get
             {

@@ -5,7 +5,6 @@
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="100,0,0,0" TextWrapping="Wrap" Text="{Binding SotrudnikRating}" VerticalAlignment="Top" FontSize="30"/>
 
-        <TextBlock HorizontalAlignment="Left" Margin="120,0,0,0" TextWrapping="Wrap" Text="{Binding Id}" VerticalAlignment="Top" FontSize="30"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="120,40,0,0" TextWrapping="Wrap" Text="{Binding Firstname}" VerticalAlignment="Top" FontSize="20"/>
         <TextBlock HorizontalAlignment="Left" Margin="220,40,0,0" TextWrapping="Wrap" Text="{Binding Lastname}" VerticalAlignment="Top" FontSize="20"/>
