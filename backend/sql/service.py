@@ -12,10 +12,12 @@ from sqlalchemy.dialects.postgresql import UUID
 import json
 
 
-async def get_id_by_login(session: AsyncSession, login: str) -> Union[str, None]:
+async def get_id_by_login(session: AsyncSession, login: str) -> Union[UUID, None]:
     result = await session.execute(select(Passwords.id).where(Passwords.login == login))
     if result.rowcount != 0:
-        return result.scalars().one()[0]
+        r = result.all()[0]
+        tmp: UUID = r.id
+        return tmp
     else:  # если записи не найдены то возвращаем None.
         return None
 
@@ -23,7 +25,13 @@ async def get_id_by_login(session: AsyncSession, login: str) -> Union[str, None]
 async def get_FIO_by_id(session: AsyncSession, id: UUID) -> Union[dict, None]:
     result = await session.execute(select(Users.firstname, Users.surname, Users.lastname).where(Users.id == id))
     if result.rowcount != 0:
-        return result.scalars().one()[0]
+        r = result.all()[0]
+        tmp: dict = {
+            "firstname": r[0],
+            "surname": r[1],
+            "lastname": r[2]
+        }
+        return tmp
     else:  # если записи не найдены то возвращаем None.
         return None
 
@@ -31,7 +39,9 @@ async def get_FIO_by_id(session: AsyncSession, id: UUID) -> Union[dict, None]:
 async def get_login(session: AsyncSession, id: UUID) -> Union[str, None]:
     result = await session.execute(select(Passwords.login).where(Passwords.id == id))
     if result.rowcount != 0:
-        return result.scalars().one()[0]
+        r = result.all()[0]
+        tmp: str = r.login
+        return tmp
     else:  # если записи не найдены то возвращаем None.
         return None
 
@@ -39,7 +49,9 @@ async def get_login(session: AsyncSession, id: UUID) -> Union[str, None]:
 async def get_hash_password(session: AsyncSession, id: UUID) -> Union[str, None]:
     result = await session.execute(select(Passwords.hash_pass).where(Passwords.id == id))
     if result.rowcount != 0:
-        return result.scalars().one()[0]
+        r = result.all()[0]
+        tmp: str = r.hash_pass
+        return tmp
     else:  # если записи не найдены то возвращаем None.
         return None
 
