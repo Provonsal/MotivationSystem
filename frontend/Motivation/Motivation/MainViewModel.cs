@@ -17,19 +17,20 @@ namespace Motivation
         public MainViewModel(Sotrudnik idsotr)
         {
             sotrudnik = idsotr;
-            Task<ObservableCollection<Rating>> rat = http.HttpRating(sotrudnik.id);
-            rat.RunSynchronously();
-            rating = rat.Result;
-            foreach(var r in rating)
-            {
-                int id=1;
-                if(r.id == sotrudnik.id)
-                    {
-                    sotrudnikRating = id;
-                    break;
-                }
-                id++;
-            }
+            //Task<ObservableCollection<Rating>> rat = http.HttpRating(sotrudnik.id);
+            //rat.RunSynchronously();
+            //rating = rat.Result;
+            //foreach(var r in rating)
+            //{
+            //    int id=1;
+            //    if(r.id == sotrudnik.id)
+            //        {
+            //        sotrudnikRating = id;
+            //        break;
+            //    }
+            //    id++;
+            //}
+            
         }
         int sotrudnikRating;
         public int SotrudnikRating
@@ -93,13 +94,14 @@ namespace Motivation
             {   
                 return year;
             }
-            set
+             set
             {
+                
                 year = value;
                 OnPropertyChanged(nameof(year));
             }
         }
-        static string [] month  = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
+       public  static string [] month  = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
 
         int selectedmonth;
         private RelayCommand salaryCommand;
@@ -131,6 +133,7 @@ namespace Motivation
             set
             {
                 salary = value;
+                
                 OnPropertyChanged(nameof(salary));
             }
         }
@@ -143,6 +146,7 @@ namespace Motivation
             set
             {
                 selectedmonth = value;
+                
                 OnPropertyChanged(nameof(selectedmonth));
             }
         }

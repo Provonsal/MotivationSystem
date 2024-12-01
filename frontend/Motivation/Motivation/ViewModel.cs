@@ -25,13 +25,14 @@ namespace Motivation
                   {
                       try
                       {
-                          sotrudnik = await http.HttpLogin(new Login(login, password));
+                          //sotrudnik = await http.HttpLogin(new Login(login, password));
+                          sotrudnik = new Sotrudnik("gsdjg192ruhdfosjf", "Иванов", "Иван", "Иванович");
                       }
                       catch(Exception ex)
                       {
                           MessageBox.Show(ex.ToString(),"Ошибка", MessageBoxButton.OK,MessageBoxImage.Error);
                       }
-                      PageSotrudnik mw = new PageSotrudnik(sotrudnik);
+                      MainWindow mw = new MainWindow(sotrudnik);
                       mw.Show(); }));
             }
         }

@@ -4,12 +4,12 @@
              HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
     <Grid>
 
-        <TextBlock HorizontalAlignment="Left" Margin="100,0,0,0" TextWrapping="Wrap" Text="Месяц зарплаты:" VerticalAlignment="Top" FontSize="20"/>
-        <TextBlock x:Name="DateTime" HorizontalAlignment="Left" Margin="260,0,0,0" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,40,0,0" TextWrapping="Wrap" Text="Месяц зарплаты:" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="DateTime" HorizontalAlignment="Left" Margin="260,40,0,0" TextWrapping="Wrap" Text="Март" VerticalAlignment="Top" FontSize="20"/>
 
-        <TextBlock HorizontalAlignment="Left" Margin="100,40,0,0" TextWrapping="Wrap" Text="Зарплата:" VerticalAlignment="Top" FontSize="20"/>
-        <TextBlock x:Name="salary" HorizontalAlignment="Left" Margin="190,40,0,0" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" FontSize="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="300,40,0,0" TextWrapping="Wrap" Text="Премия:" VerticalAlignment="Top" FontSize="20" />
-        <TextBlock x:Name="bonus" HorizontalAlignment="Left" Margin="380,40,0,0" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,80,0,0" TextWrapping="Wrap" Text="Зарплата:" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="salary" HorizontalAlignment="Left" Margin="190,80,0,0" TextWrapping="Wrap" Text="40000" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="300,80,0,0" TextWrapping="Wrap" Text="Премия:" VerticalAlignment="Top" FontSize="20" />
+        <TextBlock x:Name="bonus" HorizontalAlignment="Left" Margin="380,80,0,0" TextWrapping="Wrap" Text="30000" VerticalAlignment="Top" FontSize="20"/>
     </Grid>
     </UserControl>
